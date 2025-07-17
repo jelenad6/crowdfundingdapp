@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import CrowdfundingABI from './Crowdfunding.json'; // Import your smart contract ABI
-import getWeb3 from './web3'; // Utility function to get Web3 provider
+import CrowdfundingABI from './Crowdfunding.json'; 
+import getWeb3 from './web3'; 
 
 import CreateProject from './components/CreateProject';
 import WithdrawFunds from './components/WithdrawFunds';
@@ -15,16 +15,16 @@ const App = () => {
   useEffect(() => {
     const init = async () => {
       try {
-        // Get Web3 provider
+        
         const web3 = await getWeb3();
         setWeb3(web3);
 
-        // Get user accounts from MetaMask
+        
         const accounts = await web3.eth.getAccounts();
         setAccounts(accounts);
 
-        // Instantiate smart contract with your contract address
-        const contractAddress = '0x605A340dD08CE0AD6a40f6ad3c2F6621C0888533'; // Replace with your actual contract address
+        
+        const contractAddress = '0x605A340dD08CE0AD6a40f6ad3c2F6621C0888533'; 
         const contractInstance = new web3.eth.Contract(
           CrowdfundingABI,
           contractAddress
@@ -38,7 +38,7 @@ const App = () => {
     init();
   }, []);
 
-  // Render loading message until contract is initialized
+  
   if (!web3 || !contract) {
     return <div>Loading...</div>;
   }
